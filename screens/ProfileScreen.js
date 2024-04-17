@@ -52,6 +52,10 @@ const ProfileScreen = () => {
     // Add more courses as needed
   ];
 
+  // Sample user data
+  const userId = '12345';
+  const userEmail = 'example@example.com';
+
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.sidebarIcon} onPress={toggleSidebar}>
@@ -67,8 +71,16 @@ const ProfileScreen = () => {
           </TouchableOpacity>
           <TouchableOpacity style={styles.sidebarButton} onPress={handleLogout}>
             <MaterialIcons name="logout" size={24} color="black" />
-            <Text style={styles.buttonText}>Logout</Text>
+            <Text style={styles.buttonText}onPress= {() => navigation.navigate('Login')}>Logout</Text>
           </TouchableOpacity>
+          <TouchableOpacity style={styles.sidebarButton} onPress={() => navigation.navigate('UserInfo')}>
+            <MaterialIcons name="person" size={24} color="black" />
+            <Text style={styles.buttonText}>User Info</Text>
+          </TouchableOpacity>
+          <View style={styles.userInfoContainer}>
+            <Text>User ID: {userId}</Text>
+            <Text>Email: {userEmail}</Text>
+          </View>
         </View>
       )}
       <View style={styles.content}>
@@ -162,6 +174,9 @@ const styles = StyleSheet.create({
   addButtonLabel: {
     color: 'white',
     fontSize: 16,
+  },
+  userInfoContainer: {
+    marginTop: 20,
   },
 });
 
