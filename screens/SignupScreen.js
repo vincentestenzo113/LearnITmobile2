@@ -5,6 +5,9 @@ const SignupScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [verifyPassword, setVerifyPassword] = useState('');
+  const [studentID, setStudentID] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
 
   const handleSignup = () => {
     // Implement signup logic here
@@ -13,6 +16,14 @@ const SignupScreen = ({ navigation }) => {
       return;
     }
     // Proceed with signup
+    const userData = {
+      email,
+      password,
+      studentID,
+      firstName,
+      lastName,
+    };
+    console.log(userData); // Example: You can send this data to your backend for registration
   };
 
   const isPasswordValid = (pwd) => /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/.test(pwd);
@@ -40,6 +51,25 @@ const SignupScreen = ({ navigation }) => {
         secureTextEntry
         value={verifyPassword}
         onChangeText={setVerifyPassword}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Student ID"
+        value={studentID}
+        onChangeText={setStudentID}
+        keyboardType="numeric"
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="First Name"
+        value={firstName}
+        onChangeText={setFirstName}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Last Name"
+        value={lastName}
+        onChangeText={setLastName}
       />
       <View style={styles.buttonContainer}>
         <View style={styles.button}>
